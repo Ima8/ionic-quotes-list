@@ -1,6 +1,11 @@
 {
-  "name": "ionic-quotes",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {}
+    "name": "ionic-quotes",
+    "app_id": "",
+    "type": "ionic-angular",
+    "integrations": {},
+    "proxies": [{
+        "path": "/api",
+        "proxyUrl": "http://web.sit.kmutt.ac.th/sanit"
+    }]
+
 }

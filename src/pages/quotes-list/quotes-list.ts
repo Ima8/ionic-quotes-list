@@ -25,7 +25,8 @@ export class QuotesListPage {
 
   constructor(private http: Http, public navCtrl: NavController, public navParams: NavParams) {
     this.isfiltered = false;
-    this.http.get('quotes.json')
+    // this.http.get('quotes.json')
+    this.http.get('/api/quotes.json')
       .map(response => response.json())
       .subscribe(data => { // success
         this.quotesList = data.quotes;
