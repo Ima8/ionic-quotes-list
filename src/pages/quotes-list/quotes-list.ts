@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Http } from '@angular/http';
-
-import 'rxjs/add/operator/map';
-
+import { QuotesDataProvider, Quote } from '../../providers/quotes-data/quotes-data'
 import { QoutesDetailPage } from '../qoutes-detail/qoutes-detail';
 
 /**
@@ -19,17 +16,19 @@ import { QoutesDetailPage } from '../qoutes-detail/qoutes-detail';
 })
 export class QuotesListPage {
 
-  quotesList: Array<any> = [];
+  quotesList: Array<Quote> = [];
   filteredQuotes: Array<any> = [];
   isfiltered: boolean;
 
-  constructor(private http: Http, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public quotesData: QuotesDataProvider,
+    public navCtrl: NavController,
+    public navParams: NavParams) {
     this.isfiltered = false;
-    // this.http.get('quotes.json')
-    this.http.get('/api/quotes.json')
-      .map(response => response.json())
+
+    this.quotesData.load()
       .subscribe(data => { // success
-        this.quotesList = data.quotes;
+        this.quotesList = data;
       },
       error => { // error
         console.log("error is " + error)
@@ -54,7 +53,7 @@ export class QuotesListPage {
       } else {
         this.isfiltered = false
       }
-    }else{
+    } else {
       this.isfiltered = false
     }
 

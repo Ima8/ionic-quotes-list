@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { QuotesListPage } from '../pages/quotes-list/quotes-list';
 import { QoutesDetailPage } from '../pages/qoutes-detail/qoutes-detail'
 import { HttpModule } from "@angular/http";
+import { QuotesDataProvider } from '../providers/quotes-data/quotes-data';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpModule } from "@angular/http";
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    QuotesDataProvider
   ]
 })
 export class AppModule { }
